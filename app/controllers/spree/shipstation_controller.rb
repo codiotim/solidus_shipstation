@@ -18,7 +18,7 @@ module Spree
       @shipments = @shipments.page(params[:page]).per(50)
 
       respond_to do |format|
-        format.xml { render xml: @shipments }
+        format.xml { render layout: false }
       end
     end
 
