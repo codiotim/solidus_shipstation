@@ -3,6 +3,8 @@
 module Spree
   class ShipstationController < Spree::BaseController
     protect_from_forgery with: :null_session, only: :shipnotify
+    attr_accessor :start_date
+    attr_accessor :end_date
 
     before_action :authenticate_shipstation
 
@@ -16,7 +18,7 @@ module Spree
       @shipments = @shipments.page(params[:page]).per(50)
 
       respond_to do |format|
-        format.xml { render layout: false }
+        format.xml { render xml: @shipments }
       end
     end
 
